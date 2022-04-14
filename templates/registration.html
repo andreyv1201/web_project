@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
+</head>
+<body>
+
+    <div id="reg">
+    
+            <h1 id="head">Регистрация на сайте</h1>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            {{ form.nick(id="nick", placeholder="Введи ник") }} <br>
+            {{ form.password(id="pass", placeholder="Введи пароль") }} <br>
+            {{ form.submit(id="submit") }}
+        </form>
+
+        {% for i in form %}
+
+            {% for error in i.errors %}
+                <h3 style="color: red" >{{ error }}</h3>
+            {% endfor %}
+
+        {% endfor %}
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+    
+                <h4> {{ message }} </h4>
+    
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+
+        <img src="{{ url_for('static', filename='images/registration.png') }}" alt="">
+        <h5 style="margin-top: 30px;"> Если есть аккаунт <a style="text-decoration: none;" href="/login">авторизуйтесь</a> </h5>
+    </div>
+
+
+</body>
+</html>
