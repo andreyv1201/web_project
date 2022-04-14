@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Messenger</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
+</head>
+<body>
+    
+    <div class="data">
+        <a id="linkNick" href="/info_user/{{ current_user.id }}"> <h2 id="userNick" >{{ current_user.nick}} ({{ current_user.id }})</h2> </a>
+        <div class="buttonLinks">
+            <a id="upd" type="button" href="/update_acc/{{current_user.id}}">Обновить данные</a>
+            <a id="logout" type="button" href="/logout_user">Выйти с аккаунта</a>
+            <a id="del" type="button" href="/delete_acc/{{current_user.id}}">Удалить аккаунт</a>
+        </div>
+        <div class="chat">
+            <a class="btn btn-primary" href="/chat" role="button">Общий чат</a>
+        </div>
+    </div>
+
+</body>
+</html>
