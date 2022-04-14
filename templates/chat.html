@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Онлайн чат</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <style type="text/css">
+        BODY {
+            background: #b0c4de
+        }
+    </style>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
+</head>
+<body>
+        <h1 id="head" >Online Chat</h1>
+        <div id="field">
+            <div id="messages" >
+                {% for i in data %}
+                    {% if data %}
+                                {% if i.user_nick == current_user.nick %}
+                                        <h3 id="myMessage" >
+                                            {{ i.user_nick }}
+                                            {% for j in TimeData %}
+                                            {% if j['id'] == i.id_message  %}
+                                                ( {{ j['timeHour'] }} )
+                                            {% endif %}
+                                            {% endfor %}
+                                        <hr>
+                                            {{ i.message }}
+                                        </h3>
+
+                                        {% else %}
+                                        <h3 id="otherMessage" >
+
+                                            {{ i.user_nick }} 
+
+                                            {% for j in TimeData %}
+                                            {% if j['id'] == i.id_message  %}
+                                                ( {{ j['timeHour'] }} ) 
+                                            {% endif %}
+                                            {% endfor %}
+
+                                        <hr>
+                                            {{ i.message }}
+                                        </h3>
+                                {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.message(id="message", placeholder="Текст сообщения") }}
+        {{ form.submit(id="submit") }}
+    </form>
+        <a id="updatePage" href="/chat/" type="button">Обновить страницу</a>
+        <p id="helpText" >( Что-бы обновить список сообщений обновите страницу )</p>
+        <a id="link" href="/">На главную</a>
+
+</body>
+</html>
