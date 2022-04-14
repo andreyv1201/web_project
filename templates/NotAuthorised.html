@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ты не авторизован!</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
+</head>
+<body>
+    <h1 id="text"> Что-бы посетить эту страницу, <a href="/login">войди</a> или <a href="/registration">зарегистрируйся</a> </h1>
+    <img src="{{ url_for('static', filename='images/401.png') }}" alt="">
+</body>
+</html>
