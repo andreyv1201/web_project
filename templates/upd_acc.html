@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <body>
+
+    <h1>Обновление данных профиля</h1>
+    <div id="form">
+        <form method="POST" >
+            {{ form.hidden_tag() }}
+        {{ form.upd_nick(id="newNick", placeholder="Новый ник, текущий - '{0}'".format(current_user.nick)) }} <br>
+        <br>
+        {{ form.upd_password(id="newPass", placeholder="Новый пароль") }} <br>
+        <br>
+        {{ form.submit(id="submit") }}
+        </form>
+    </div>
+
+    <div id="flash">
+        <h3 id="errors" >Сообщения:</h3>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <h4> {{ message }} </h4>
+                    {% endfor %}
+
+                {% else %}
+                    <p>-</p>
+                {% endif %}
+
+            {% endwith %}
+    </div>
+    <a id="link" class="btn btn-primary" href="/">На главную</a>
+</body>
+{% endblock %}
