@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Messenger</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <style type="text/css">
+        BODY {
+            background: #b0c4de
+        }
+    </style>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
+</head>
+<body>
+    <h1></h1>
+    <div class="data">
+        <div class="chat">
+            <a class="btn btn-primary" href="/chat" role="button">Общий чат</a>
+        </div>
+    </div>
+    <h1></h1>
+    <div class="data">
+        <div class="chat">
+            <a class="btn btn-primary" href="/chat" role="button">Создать личный чат</a>
+        </div>
+    </div>
+</body>
+{% endblock %}
