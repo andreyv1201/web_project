@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <head>
+        <title>Онлайн чат</title>
+        <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
+    </head>
+    <body>
+    <style>
+     .nomymess {
+      color: #191970;
+      font-size: 200%;
+      }
+      .mymess {
+      color: MediumBlue;
+      font-size: 200%;
+      }
+    }
+  </style>
+    <h1 id="head">Онлайн чат</h1>
+        <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.message(id="message", placeholder="Текст сообщения") }}
+        {{ form.submit(id="submit") }}
+    </form>
+        <a id="updatePage" href="/chat/" class="btn btn-primary" type="button">Обновить страницу</a>
+        <p id="helpText" >( Что-бы обновить список сообщений обновите страницу )</p>
+        <a id="link" class="btn btn-primary" href="/" >На главную</a>
+        <h1></h1>
+        <div id="field">
+            <div id="messages" >
+                <h1></h1>
+                {% for i in data %}
+                    {% if data %}
+                                {% if i.user_nick == current_user.nick %}
+                                        <h3 id="myMessage" class="mymess">
+                                            {{ i.user_nick }}
+                                            {% for j in TimeData %}
+                                            {% if j['id'] == i.id_message  %}
+                                                ( {{ j['timeHour'] }} )<nobr>:</nobr>
+                                            {% endif %}
+                                            {% endfor %}
+
+                                            {{ i.message }}
+                                            <hr>
+                                        </h3>
+
+                                        {% else %}
+                                        <h3 id="otherMessage" class="nomymess">
+
+                                            {{ i.user_nick }}
+
+                                            {% for j in TimeData %}
+                                            {% if j['id'] == i.id_message  %}
+                                                ( {{ j['timeHour'] }} )<nobr>:</nobr>
+                                            {% endif %}
+                                            {% endfor %}
+
+
+
+                                            {{ i.message }}
+                                            <hr>
+                                        </h3>
+                                {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+{% endblock %}
