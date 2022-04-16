@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Авторизация</h1>
+    <div id="form">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.check_nick(id="checkNick", placeholder="Ник") }} <br>
+            <br>
+            {{ form.check_pass(id="checkPass", placeholder="Пароль", type="password") }} <br>
+            <br>
+            {{ form.submit(id="submit") }}
+        </form>
+    </div>
+
+    {% for i in form %}
+        {% for error in i.erors %}
+            <h4 style="color: red">{{ error }}</h4>
+        {% endfor %}
+    {% endfor %}
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+
+            <h4> {{ message }} </h4>
+
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <br>
+    <h5 style="margin-top: 30px;"> Нет аккаунта? <a style="text-decoration: none;" href="/registration">Зарегистрируйтесь!</a> </h5>
+{% endblock %}
