@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Удаление аккаунта</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
+</head>
+    <body>
+
+    <div id="flash" >
+        <h3 id="errors" >Сообщения:</h3>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <h4 id="mes"> {{ message }} </h4>
+                {% endfor %}
+
+            {% else %}
+                <p>-----</p>
+            {% endif %}
+
+        {% endwith %}
+        <a style="margin-right: 20px; text-decoration: none;" class="btn btn-primary" href="/registration">Регистрация</a> <a style="margin-left: 20px; text-decoration: none;" class="btn btn-primary" href="/login">Вход</a>
+
+    </div>
+
+</body>
+{% endblock %}
