@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <title>Подробная информация о '{{ user.nick }}'</title>
+    <div id="main">
+        <h1>Подробная информация об аккаунте - '{{ user.nick }}'</h1>
+        <div id="all_info">
+            <h3 id="info" >ID: {{ user.id }}</h3>
+            <h3 id="info" >Дата регистрации: <br>Год: {{ date.year }} <br>Месяц: {{ date.month }} <br>День: {{ date.day }} <hr>
+                           Час: {{ time.hour }} <br>Минута: {{ time.minute }} <br>Секунда: {{ time.second }}
+            </h3>
+        </div>
+
+    </div>
+
+    <a id="link" class="btn btn-primary" href="/">На главную</a>
+{% endblock %}
