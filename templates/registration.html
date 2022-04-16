@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Регистрация</h1>
+
+    <div id="reg">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+
+            {{ form.nick(id="nick", placeholder="Введи ник") }} <br>
+            <br>
+            {{ form.password(id="pass", placeholder="Введи пароль") }} <br>
+            <br>
+            {{ form.submit(id="submit") }}
+
+        </form>
+
+        {% for i in form %}
+
+            {% for error in i.errors %}
+                <h3 style="color: red" >{{ error }}</h3>
+            {% endfor %}
+
+        {% endfor %}
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+
+                <h4> {{ message }} </h4>
+
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+
+        <img src="{{ url_for('static', filename='images/registration.png') }}" alt="">
+        <h5 style="margin-top: 30px;"> Если есть аккаунт <a style="text-decoration: none;" href="/login">авторизуйтесь</a> </h5>
+    </div>
+{% endblock %}
