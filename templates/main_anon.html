@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать!</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
+</head>
+<body>
+
+    <div>
+        <h1 id="mainText" >Привет! Это мессенджер с общим чатом!</h1>
+        <h1></h1>
+        <h3>    Чтобы начать, войди или зарегистрируйся!</h3>
+    </div>
+    <img src="{{ url_for('static', filename='images/hi.png') }}" width="500" height="500" alt="">
+    
+</body>
+{% endblock %}
